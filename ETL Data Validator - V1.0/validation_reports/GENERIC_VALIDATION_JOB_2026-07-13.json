@@ -1,0 +1,89 @@
+{
+  "ADF Trigger Check": {
+    "Status": "Pass",
+    "Description": "Job ID: GENERIC_VALIDATION_JOB\n Run ID: local-run\n Triggered Date: 2026-07-13\n Result: Pass"
+  },
+  "Source Vs Target Count Check": {
+    "Status": "Fail",
+    "Description": "Source Count:5\n Target Count:6 \nSource and Target count is NOT matching",
+    "source_count": 5,
+    "target_count": 6,
+    "records_tested": 5,
+    "mismatch_count": 1
+  },
+  "Composite Key Check": {
+    "Status": "Fail",
+    "Description": "Given Colmns: {'country', 'first_name', 'last_name', 'signup_date', 'email', 'keyColumn'} which is present in table is not considered as part of composite check\nDuplicate Record Count 1\n\nComposite Key Check Failed - duplicate keys found.",
+    "duplicate_records": 1,
+    "sql": "SELECT customer_id, COUNT(*) AS cnt FROM target GROUP BY customer_id HAVING COUNT(*) > 1",
+    "duplicate_rows": [
+      {
+        "customer_id": 103,
+        "cnt": 2
+      }
+    ],
+    "records_tested": 6,
+    "mismatch_count": 1
+  },
+  "Duplicate Row Check": {
+    "Status": "Fail",
+    "Description": "DuplicateRowCheck for customer_id failed. Duplicate count: 1",
+    "sql": "SELECT customer_id,count(*) as cnt FROM target group by customer_id having count(*)>1",
+    "duplicate_rows": [
+      {
+        "customer_id": 103,
+        "cnt": 2
+      }
+    ],
+    "records_tested": 6,
+    "mismatch_count": 1
+  },
+  "Mandatory Column Check": {
+    "Status": "Fail",
+    "Description": "Target Column:first_name Mandatory validation passed.\nTarget Column:last_name Mandatory validation passed.\nTarget Column:email Mandatory validation failed. Mismatch count: 1",
+    "mismatch_counts": {
+      "first_name": 0,
+      "last_name": 0,
+      "email": 1
+    },
+    "mismatched_rows": {
+      "email": [
+        {
+          "customer_id": 104,
+          "first_name": "Dinesh",
+          "last_name": "Kumar",
+          "email": "",
+          "country": "IN",
+          "signup_date": "2025-01-13",
+          "keyColumn": "104"
+        }
+      ]
+    },
+    "records_tested": 6,
+    "mismatch_count": 1
+  },
+  "Comparison Check": {
+    "Status": "Fail",
+    "Description": "There are 6 number of records to test for 'first_name'\nComparison Check for source column: first_name and Target column first_name PASSED\nThere are 6 number of records to test for 'last_name'\nComparison Check for source column: last_name and Target column last_name FAILED\nMismatch count : 1\nThere are 6 number of records to test for 'email'\nComparison Check for source column: email and Target column email FAILED\nMismatch count : 1\nThere are 6 number of records to test for 'country'\nComparison Check for source column: country and Target column country PASSED\nThere are 6 number of records to test for 'signup_date'\nComparison Check for source column: signup_date and Target column signup_date PASSED",
+    "records_tested": 6,
+    "mismatch_count": 2,
+    "mismatched_rows": [
+      {
+        "keyColumn": "102",
+        "source_last_name": "Smith",
+        "target_last_name": "Smyth"
+      },
+      {
+        "keyColumn": "104",
+        "source_email": "dinesh.kumar@example.com",
+        "target_email": ""
+      }
+    ]
+  },
+  "Table Schema Validation": {
+    "Status": "Pass",
+    "Description": "Both schema are not same.\nProceeding with partial Validation i.e. Validating data type of the column being passed.\nGiven column customer_id datatype bigint matched.\nGiven column first_name datatype string matched.\nGiven column last_name datatype string matched.\nGiven column email datatype string matched.\nGiven column country datatype string matched.\nGiven column signup_date datatype string matched.",
+    "records_tested": 6,
+    "mismatch_count": 0
+  }
+}

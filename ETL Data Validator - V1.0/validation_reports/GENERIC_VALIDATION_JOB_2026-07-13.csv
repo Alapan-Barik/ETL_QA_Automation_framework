@@ -1,0 +1,36 @@
+Check,Status,Description
+ADF Trigger Check,Pass,"Job ID: GENERIC_VALIDATION_JOB
+ Run ID: local-run
+ Triggered Date: 2026-07-13
+ Result: Pass"
+Source Vs Target Count Check,Fail,"Source Count:5
+ Target Count:6 
+Source and Target count is NOT matching"
+Composite Key Check,Fail,"Given Colmns: {'country', 'first_name', 'last_name', 'signup_date', 'email', 'keyColumn'} which is present in table is not considered as part of composite check
+Duplicate Record Count 1
+
+Composite Key Check Failed - duplicate keys found."
+Duplicate Row Check,Fail,DuplicateRowCheck for customer_id failed. Duplicate count: 1
+Mandatory Column Check,Fail,"Target Column:first_name Mandatory validation passed.
+Target Column:last_name Mandatory validation passed.
+Target Column:email Mandatory validation failed. Mismatch count: 1"
+Comparison Check,Fail,"There are 6 number of records to test for 'first_name'
+Comparison Check for source column: first_name and Target column first_name PASSED
+There are 6 number of records to test for 'last_name'
+Comparison Check for source column: last_name and Target column last_name FAILED
+Mismatch count : 1
+There are 6 number of records to test for 'email'
+Comparison Check for source column: email and Target column email FAILED
+Mismatch count : 1
+There are 6 number of records to test for 'country'
+Comparison Check for source column: country and Target column country PASSED
+There are 6 number of records to test for 'signup_date'
+Comparison Check for source column: signup_date and Target column signup_date PASSED"
+Table Schema Validation,Pass,"Both schema are not same.
+Proceeding with partial Validation i.e. Validating data type of the column being passed.
+Given column customer_id datatype bigint matched.
+Given column first_name datatype string matched.
+Given column last_name datatype string matched.
+Given column email datatype string matched.
+Given column country datatype string matched.
+Given column signup_date datatype string matched."
