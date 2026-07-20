@@ -1,0 +1,6 @@
+customer_id,first_name,last_name,email,country,signup_date
+101,Alice,Johnson,alice.johnson@example.com,US,2025-01-10
+102,Bob,Smith,bob.smith@example.com,US,2025-01-11
+103,Carla,Diaz,carla.diaz@example.com,MX,2025-01-12
+104,Dinesh,Kumar,dinesh.kumar@example.com,IN,2025-01-13
+105,Elin,Berg,elin.berg@example.com,SE,2025-01-14
